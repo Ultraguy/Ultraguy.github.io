@@ -6,6 +6,7 @@ var spawners = [];
 var colorStart;
 var speed;
 var currentDistance;
+var rainbow = false;
 class Particle {
   constructor(x, y) {
     this.x = x;
@@ -14,8 +15,12 @@ class Particle {
     this.size = 12;
     this.fade = false;
     particles.push(this);
-    this.col = createVector(color1r.value(), color1g.value(), color1b.value())
-    //this.col = createVector(0, 255, 255);
+    if (!rainbow) {
+      this.col = createVector(color1r.value(), color1g.value(), color1b.value())
+    } else {
+      this.col = createVector(0, 100, 50)
+
+    }
     let angle = Math.random() * Math.PI * 3;
     let dx = Math.cos(angle) * random(1, 2.5);
     let dy = Math.sin(angle) * random(1, 2.5);
@@ -27,16 +32,20 @@ class Particle {
     this.y += this.dir.y;
     this.dir = p5.Vector.lerp(this.dir, particleGravity, 0.1);
     this.age += 1;
-    if (!this.fade) {
-      this.col.lerp(color2r.value(), color2g.value(), color2b.value(), 0.03);
-      //this.col.lerp(255, 255, 255, 0.03)
+    if (!rainbow) {
+      if (!this.fade) {
+        this.col.lerp(color2r.value(), color2g.value(), color2b.value(), 0.03);
+        //this.col.lerp(255, 255, 255, 0.03)
+      } else {
+        this.col.lerp(0, 0, 0, 0.03);
+      }
+      if (this.col.x > 230 && this.col.y < 30 && this.col.z < 30) {
+        this.fade = true;
+      }
     } else {
-      this.col.lerp(0, 0, 0, 0.03);
+      colorMode(HSL);
+      this.col.x = map(this.age, 0, lifeSpan.value(), 360, 0);
     }
-    if (this.col.x > 230 && this.col.y < 30 && this.col.z < 30) {
-      this.fade = true;
-    }
-
   }
   show() {
     noStroke();
@@ -102,11 +111,19 @@ function createGUI() {
   createP("Life Span of Particles").position(0, space * 16).style("color", "white");
   lifeSpan.position(0, space * 17);
 
+
   spawnerDistance = createSlider(1, 500, 100, 1);
   createP("Radius of Spawners").position(0, space * 18).style("color", "white");
   spawnerDistance.position(0, space * 19);
+
+  rainbowBox = createCheckbox("Rainbow?", false);
+  rainbowBox.position(150, space * 2);
+  rainbowBox.style("color", "white");
+  rainbowBox.changed((function() {
+    rainbow = !rainbow;
+  }))
   randomizer = createButton("Randomize Values")
-  randomizer.position(0, space * 20);
+  randomizer.position(150, space * 1);
   randomizer.mousePressed(randomizeValues)
 }
 
@@ -124,6 +141,7 @@ function randomizeValues() {
 }
 
 function draw() {
+  colorMode(RGB);
   background(30);
 
   for (i = 0; i < particles.length; i++) {
@@ -169,7 +187,7 @@ function generateSpawners(amount) {
 
 function mouseClicked() {
   //modeSwitch = !modeSwitch;
-
+  //rainbow = true;
 
   //disable mouseSwitching code above, and enable code below to make it so when you click,
   //flame goes towards where you last clicked.
