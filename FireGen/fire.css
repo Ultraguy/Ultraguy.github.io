@@ -3,6 +3,99 @@ html, body {
   padding: 0;
   background-color: rgb(30, 30,30);
 }
+/*
+  The CSS below was generated using http://danielstern.ca/range.css/#/
+  You should totally check that site out! great css generator!
+  It is useful for those bad at CSS (Like me)
+
+
+
+
+*/
 canvas {
   display: block;
+}
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 5px 0;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+  background: rgba(240, 240, 240, 0.93);
+  border-radius: 25px;
+  border: 0px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 7.6px #ff0000, 0px 0px 0px #ff1a1a;
+  border: 5.8px solid rgba(0, 0, 0, 0);
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+  background: rgba(0, 0, 0, 0.48);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: rgba(255, 255, 255, 0.93);
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+  background: rgba(240, 240, 240, 0.93);
+  border-radius: 25px;
+  border: 0px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 7.6px #ff0000, 0px 0px 0px #ff1a1a;
+  border: 5.8px solid rgba(0, 0, 0, 0);
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+  background: rgba(0, 0, 0, 0.48);
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: rgba(217, 217, 217, 0.93);
+  border: 0px solid #000000;
+  border-radius: 50px;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: rgba(240, 240, 240, 0.93);
+  border: 0px solid #000000;
+  border-radius: 50px;
+  box-shadow: 0px 0px 1px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 0px 0px 7.6px #ff0000, 0px 0px 0px #ff1a1a;
+  border: 5.8px solid rgba(0, 0, 0, 0);
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+  background: rgba(0, 0, 0, 0.48);
+  cursor: pointer;
+  height: 10px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: rgba(240, 240, 240, 0.93);
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: rgba(255, 255, 255, 0.93);
 }
