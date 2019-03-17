@@ -205,7 +205,12 @@ function createGUI() {
   activateCustomSpawners.changed((function () {
     customMode = !customMode;
   }))
-
+  saveasImage = createButton("Save as .png");
+  GUIArr.push(saveasImage);
+  saveasImage.position(150, space * 8);
+  saveasImage.mousePressed(function(){
+    saveCanvas('particles' + Math.floor(Date.now()/1000), 'png');
+  })
   guiToggle = createButton("Toggle GUI");
   guiToggle.position(width - 120, space * 0);
   guiToggle.mousePressed(toggleGUI);
