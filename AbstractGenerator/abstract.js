@@ -55,7 +55,7 @@ function draw() {
     }
     for (let p of lastPoints) {
       for (let i = 0; i < 3; i++) {
-        // if (random(10) < 2) {continue};
+         if (gen.weirdMode && random(10) < 2) {continue};
         let newPoint = p.copy()
         let parentColor = get(p.x, p.y);
         newPoint.x += floor(random(-1, 2));
